@@ -1,31 +1,48 @@
 import React from "react";
 
-import { View, Text, Image, Button, StyleSheet } from "react-native";
+import {
+	View,
+	TouchableOpacity,
+	TouchableNativeFeedback,
+	Text,
+	Image,
+	Button,
+	StyleSheet,
+	Platform,
+} from "react-native";
 
 import Colors from "../../constants/Colors";
 
 const ProductItem = (props) => {
-	return (
-		<View style={styles.product}>
-			<Image style={styles.image} source={{ uri: props.image }} />
-			<View style={styles.texts}>
-				<Text style={styles.title}>{props.title}</Text>
-				<Text style={styles.price}>£{props.price.toFixed(2)}</Text>
-			</View>
+	let TouchableDyanmic = TouchableOpacity;
 
-			<View style={styles.buttonRow}>
-				<Button
-					color={Colors.primary}
-					title='View Details'
-					onPress={props.onViewDetail}
-				/>
-				<Button
-					color={Colors.primary}
-					title='Add to Cart'
-					onPress={props.onAddToCart}
-				/>
+	if (Platform.OS === "android" && Platform.Version >= 21) {
+		TouchableDyanmic = TouchableNativeFeedback;
+	}
+
+	return (
+		<TouchableDyanmic onPress={props.onViewDetail} useForeground>
+			<View style={styles.product}>
+				<Image style={styles.image} source={{ uri: props.image }} />
+				<View style={styles.texts}>
+					<Text style={styles.title}>{props.title}</Text>
+					<Text style={styles.price}>£{props.price.toFixed(2)}</Text>
+				</View>
+
+				<View style={styles.buttonRow}>
+					<Button
+						color={Colors.primary}
+						title='View Details'
+						onPress={props.onViewDetail}
+					/>
+					<Button
+						color={Colors.primary}
+						title='Add to Cart'
+						onPress={props.onAddToCart}
+					/>
+				</View>
 			</View>
-		</View>
+		</TouchableDyanmic>
 	);
 };
 
