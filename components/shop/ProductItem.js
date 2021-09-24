@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
 		height: "15%",
 	},
 	title: {
+		fontFamily: "exposit-bold",
 		fontSize: 18,
 		marginVertical: 14,
 	},

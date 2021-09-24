@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
 		fontSize: 14,
 		textAlign: "center",
 		marginHorizontal: 20,
+		fontFamily: "exposit-regular",
 	},
 });
 

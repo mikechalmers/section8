@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+
+import AppLoading from "expo-app-loading";
+import * as Font from "expo-font";
 
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
@@ -12,7 +15,28 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer);
 
+const fetchFonts = () => {
+	return Font.loadAsync({
+		"exposit-regular": require("./assets/fonts/ExpositRegular.otf"),
+		"exposit-bold": require("./assets/fonts/ExpositBold.otf"),
+	});
+};
+
 export default function App() {
+	const [fontLoaded, setFontLoaded] = useState(false);
+
+	if (!fontLoaded) {
+		return (
+			<AppLoading
+				startAsync={fetchFonts}
+				onFinish={() => {
+					setFontLoaded(true);
+				}}
+				onError={() => {}}
+			/>
+		);
+	}
+
 	return (
 		<Provider store={store}>
 			<ShopNavigator />
