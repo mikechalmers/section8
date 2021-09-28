@@ -4,6 +4,7 @@ import { Platform } from "react-native";
 
 import ProductsOverviewScreen from "../screens/shop/ProductsOverviewScreen";
 import ProductScreen from "../screens/shop/ProductScreen";
+import CartScreen from "../screens/shop/CartScreen";
 
 import Colors from "../constants/Colors";
 
@@ -12,6 +13,7 @@ const ProductsNavigator = createStackNavigator(
 	{
 		ProductsOverview: ProductsOverviewScreen,
 		ProductDetail: ProductScreen,
+		Cart: CartScreen,
 	},
 	{
 		defaultNavigationOptions: {
