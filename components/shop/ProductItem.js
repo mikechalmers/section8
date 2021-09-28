@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
 	title: {
 		fontFamily: "exposit-bold",
 		fontSize: 18,
-		marginVertical: 14,
+		marginVertical: 11,
 	},
 	price: {
 		fontSize: 14,

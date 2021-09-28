@@ -8,7 +8,7 @@ import {
 	StyleSheet,
 } from "react-native";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Colors from "../../constants/Colors";
 
 const ProductScreen = (props) => {
@@ -17,6 +17,7 @@ const ProductScreen = (props) => {
 	const selectedProduct = useSelector((state) =>
 		state.products.availableProducts.find((product) => product.id === productId)
 	);
+	const dispatch = useDispatch();
 
 	return (
 		<ScrollView>
